@@ -1,5 +1,5 @@
-import UserService from "../services/UserService";
-import BaseController from "./BaseController";
+import UserService from "../../services/User/UserService";
+import BaseController from "../BaseController";
 
 
 class UserController extends BaseController {

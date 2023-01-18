@@ -1,28 +1,18 @@
-import BaseService from "../services/BaseService";
-import { Request, Response } from 'express';
-import UserModel from "./UserModel";
-import DataAccess from "./DataAccess";
-import mongoose, { Schema } from "mongoose";
+
+import { Model } from "mongoose";
+import { IUser } from "../interfaces/IUser";
 
 
 
-class BaseModel {
-    private _model: DataAccess
-    constructor(model: DataAccess) {
+class BaseModel<T> {
+    private _model: Model<T>
+    constructor(model: Model<T>) {
         this._model = model;
     }
 
-    initSchema() {
-        const schema = new Schema({
-            name: "string",
-            email: "string",
-            password: "string",
-        });
-        mongoose.model("users", schema);
-    }
-    getInstance() {
-        this.initSchema();
-        return mongoose.model("users");
+    create(data: IUser) {
+        const user = this._model.create(data);
+        return user;
     }
 }
 

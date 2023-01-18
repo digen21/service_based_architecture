@@ -1,16 +1,17 @@
-import UserModel from "../models/UserModel";
-
+import UserModel from "../models/User/UserModel";
+import { IUser } from "../interfaces/IUser";
 class BaseService {
-    private _dbController;
+    private _model: UserModel;
     constructor(model: UserModel) {
-        this._dbController = model;
+        this._model = model;
     }
 
-    create = async (data: any) => {
-        data = await this._dbController.getInstance().create(data);
-        console.log(data);
-        return data;
+    create(data: IUser) {
+        const user = this._model.create(data);
+        return user;
     }
+
+
 };
 
 export default BaseService;
