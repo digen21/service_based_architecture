@@ -3,7 +3,7 @@ import UserModel from "../../models/User/UserModel";
 
 class UserService extends BaseService {
     constructor() {
-        super(new UserModel())
+        super(new UserModel());
     }
 }
 

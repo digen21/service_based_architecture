@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import UserModel from "./User/UserModel";
 
 class DataAccess {
     getSchema = (model: string) => {
