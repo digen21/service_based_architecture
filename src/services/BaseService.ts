@@ -1,41 +1,50 @@
-import UserModel from "../models/User/UserModel";
-import { IUser } from "../interfaces/IUser";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-class BaseService {
-    private _model: UserModel;
-    constructor(model: UserModel) {
+import { CrudService } from "../interfaces/CrudService";
+class BaseService<T> implements CrudService<T>{
+    private _model: CrudService<T>;
+    constructor(model: CrudService<T>) {
         this._model = model;
     }
-
-    async create(input: IUser) {
-        const response = await this._model.create(input);
-        return response;
+    async getByProperty(input: string): Promise<T> {
+        try {
+            const response = await this
+                ._model
+                .getByProperty(input);
+            return response;
+        } catch (error) {
+            throw new Error("Method not implemented.");
+        }
     }
 
-    async update(input: IUser) {
-        console.log("Service : ", input);
-
-        const response = await this._model.update(input);
-        return response;
+    async create(input: T): Promise<T> {
+        try {
+            const response = await this
+                ._model
+                .create(input);
+            return response;
+        } catch (error) {
+            throw new Error("Method not implemented.");
+        }
     }
 
-    async delete(input: IUser) {
-        const response = await this._model.delete(input);
-        return response;
+    async update(id: string, input: T): Promise<T> {
+        try {
+            const response = await this
+                ._model
+                .update(id, input);
+            return response;
+        } catch (error) {
+            throw new Error("Method not implemented.");
+        }
     }
 
-    async getByEmail(input: IUser) {
-        const response = await this._model.getByEmail(input);
-        return response;
+    async delete(id: string): Promise<string> {
+        try {
+            const response = await this._model.delete(id);
+            return response;
+        } catch (error) {
+            throw new Error("Method not implemented.");
+        }
     }
-
-
-    async getById(input: IUser) {
-        const response = await this._model.getById(input);
-        return response;
-    }
-
 };
 
 export default BaseService;

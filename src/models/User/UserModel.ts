@@ -1,11 +1,11 @@
-import mongoose, { Schema } from "mongoose";
 import BaseModel from "../BaseModel";
 import DataAccess from "../DataAccess";
+import { IUser } from "../../interfaces/IUser";
 
-export class UserModel extends BaseModel<any>{
+export class UserModel extends BaseModel<IUser>{
     constructor() {
-        const dataAccess = new DataAccess();
-        const model: any = dataAccess.getSchema("users");
+        const dataAccess = new DataAccess<IUser>();
+        const model = dataAccess.getSchema("users");
         super(model);
     }
 }

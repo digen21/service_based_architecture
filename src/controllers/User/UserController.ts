@@ -1,11 +1,11 @@
-import UserService from "../../services/User/UserService";
-import BaseController from "../BaseController";
+// import UserService from "../../services/User/UserService";
+// // import BaseController from "../BaseController";
 
 
-class UserController extends BaseController {
-    constructor() {
-        super(new UserService());
-    }
-}
+// class UserController extends BaseController {
+//     // constructor() {
+//     //     super(new UserService());
+//     // }
+// }
 
-export default UserController;
+// export default UserController;

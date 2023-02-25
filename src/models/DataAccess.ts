@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-class DataAccess {
+class DataAccess<T>{
     getSchema = (model: string) => {
         let userSchema: Schema;
         switch (model) {
@@ -14,7 +14,7 @@ class DataAccess {
             default:
                 throw new Error("Invalid Model");
         }
-        return mongoose.model(model, userSchema);
+        return mongoose.model<T>(model, userSchema);
     }
 }
 

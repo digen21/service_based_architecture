@@ -1,9 +1,10 @@
 import { IUser } from "./IUser";
 
 export interface CrudService<T> {
-    create(input: IUser): Promise<T>
-    update(input: IUser): Promise<T>
-    delete(input: IUser): Promise<T>
+    create(input: T): Promise<T>
+    update(id: string, input: T): Promise<T>
+    delete(id: string): Promise<string>
+    getByProperty(input: string): Promise<T>
 }
 
 
