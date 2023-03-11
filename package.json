@@ -4,8 +4,8 @@
   "description": "Service Based Architecture",
   "main": "index.js",
   "scripts": {
-    "test": "npm start",
-    "start": "nodemon ./src/index.ts",
+    "start": "node ./dist/src/index.js",
+    "dev": "nodemon ./src/index.ts",
     "build": "tsc -p"
   },
   "author": "Digen More",
